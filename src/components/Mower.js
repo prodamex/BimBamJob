@@ -1,13 +1,37 @@
-import React from 'react'
+import React, {useEffect} from 'react';
+import axios from 'axios';
 
  const Mower =()=> {
-  
-    function Mower(id, x,y,o,t) {
+
+    let final1 = '';
+    
+    let Mower1 =  async() =>{
+        let resp = await axios.get('http://localhost:3000/text.txt');
+        let final1 = await resp.data;
+        console.log(final1);
+        
+    }
+
+    let Mower2 =  async() =>{
+        let resp = await axios.get('http://localhost:3000/text.txt');
+        let final2 = await resp.data;
+        console.log(final2);
+    }
+
+    
+     useEffect(() => {
+         Mower1();
+         Mower2();
+     })
+    
+    
+     
+    function Mower(id, x,y,o,suite) {
         this.id = id;
         this.x = x;
         this.y = y;
         this.o = o;
-        this.suite = t;
+        this.suite = suite;
     }
     
     const mower1 = new Mower(1,4,4,2,"LFRRFFLFRFF");
